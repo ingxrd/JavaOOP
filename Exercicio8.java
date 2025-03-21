@@ -12,7 +12,7 @@ class ContaCorrente{
 
         // vou usar o construtor pra poder instanciar
 
-        public ContaCorrente(int numeroConta, String nome, String banco, double Saldo, boolean tipoContaEspecial, double limite){
+        public ContaCorrente(int numeroConta, String nome, String banco, double saldo, boolean tipoContaEspecial, double limite){
             this.numeroConta = numeroConta;
             this.nome = nome;
             this.banco = banco;
@@ -34,12 +34,12 @@ class ContaCorrente{
 
             double saldoDisponivel = saldo + (tipoContaEspecial ? limite : 0); // conta especial = limite especial, cheque especial. 
 
-            if (valor < saldoDisponivel){
+            if (valor <= saldoDisponivel){
                 saldo = saldo - valor; 
                 System.out.println("Saque realizado com sucesso! O seu novo saldo: " + saldo);
             } else {
                 System.out.println("Valor requisitado é maior do que o saldo disponível. ");
-                System.err.println("Saldo: " + saldo);
+                System.out.println("Saldo: " + saldo);
             }
         }
 
