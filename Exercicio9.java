@@ -1,4 +1,5 @@
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 
@@ -19,22 +20,21 @@ class Aluno {
         this.nome = nome;
         this.matricula = matricula;
         this.cursoMatricula = cursoMatricula;
-        this.disciplinas = disciplinas;
-        this.notas = notas;
+        this.disciplinas = Arrays.copyOf(disciplinas, disciplinas.length);
+        this.notas = Arrays.copyOf(notas, notas.length);
     }
-
-
  
 
     void informacoesAluno(){
+        Scanner scanner = new Scanner(System.in);
+        
         System.out.println("Digite 3 disciplinas e suas consecutivas notas");
         for (int i = 0; i < 3; i++){
             System.out.println("Disciplina " + (i+1) + ": ");
             disciplinas[i] = scanner.nextLine();
-            System.out.println("Nota para " + disciplina[i] + " : ");
+            System.out.println("Nota para " + disciplinas[i] + " : ");
             notas[i] = scanner.nextDouble();
             scanner.nextLine();
-
         }
         System.out.println("Disciplinas e notas: ");
         for (int i = 0; i < 3; i++){
@@ -42,7 +42,7 @@ class Aluno {
         }
     }
 
-    void verificarAprovacao(int nota){
+    void verificarAprovacao(){
         for (int i = 0; i < 3; i++){
             if (notas[i] > 7){
                 System.out.println("Aluno aprovado em" + disciplinas[i]);
@@ -65,5 +65,24 @@ class Aluno {
  * aprovado ou não.
  */
 public class Exercicio9 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nome do aluno: ");
+        String nome = scanner.nextLine();
+        System.out.print("Matricula");
+        int matricula = scanner.nextInt();
+         scanner.nextLine();
+         System.out.print("Curso: " );
+         scanner.nextLine();
+
+         Aluno aluno1 = new Aluno(nome, matricula, nome, args, null);
+
+         aluno1.informacoesAluno();
+         aluno1.verificarAprovacao();
+         scanner.close();   
+
+    
+        
+    }
 
 }
